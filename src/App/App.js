@@ -1,11 +1,21 @@
 import React from 'react';
 import './App.scss';
 
+import goatData from '../helpers/data/goatData';
+
 class App extends React.Component {
+  // outside render - anything that modifies state
+
+  componentDidMount() {
+    const goats = goatData.getGoats();
+    console.error('goats', goats);
+  }
+
   render() {
+    // inside render - anything we need to do to modify the UI
     return (
       <div className="App">
-        <h2>Testing header</h2>
+        <h2 className="goat-title">Testing header</h2>
         <button className="btn btn-info">My Button</button>
       </div>
     );
