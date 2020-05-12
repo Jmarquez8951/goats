@@ -12,7 +12,12 @@ class App extends React.Component {
 
   componentDidMount() {
     const goats = goatData.getGoats();
-    console.error('goats', goats);
+    this.setState({ goats });
+  }
+
+  useAGoat = (goatId) => {
+    goatData.useGoat(goatId);
+    const goats = goatData.getGoats();
     this.setState({ goats });
   }
 
@@ -21,7 +26,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>GOAT YOGA LTD</h1>
-        <GoatCoral goats={this.state.goats}/>
+        <GoatCoral goats={ this.state.goats } useAGoat={ this.useAGoat }/>
       </div>
     );
   }
